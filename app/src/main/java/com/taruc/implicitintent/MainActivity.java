@@ -1,7 +1,10 @@
 package com.taruc.implicitintent;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,8 +21,35 @@ public class MainActivity extends AppCompatActivity {
         buttonView = findViewById(R.id.buttonView);
         buttonHome = findViewById(R.id.buttonHome);
         buttonSend = findViewById(R.id.buttonSend);
-
-        //define function
-
     }
+        //define function
+        public void viewTaruc(View v)
+        {
+            String url = "http://www.tarc.edu.my";
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        }
+
+        public void call (View v)
+        {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "0147175762"));
+            //intent.setData("tel" + "0123456789");
+            startActivity(intent);
+        }
+
+        public void send (View v)
+        {
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+
+            intent.setData(Uri.parse("mailto:" + "mazlindanm@tarc.edu.my"));
+            startActivity(intent);
+        }
+
+        public void home (View v)
+        {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            startActivity(intent);
+        }
 }
+
